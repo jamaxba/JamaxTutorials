@@ -31,11 +31,7 @@
                 <td>Birthday:</td>
                 <td>${userForm.birthDate}</td>
             </tr>
-            <tr>
-                <td>Profession:</td>
-                <td>${userForm.profession}</td>
-            </tr>
- 
+
         </table>
     </div>
 </body>

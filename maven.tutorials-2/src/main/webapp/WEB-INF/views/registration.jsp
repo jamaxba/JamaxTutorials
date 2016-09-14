@@ -31,11 +31,6 @@
                     <td>Birthday (mm/dd/yyyy):</td>
                     <td><form:input path="birthDate" /></td>
                 </tr>
-                <tr>
-                    <td>Profession:</td>
-                    <td><form:select path="profession" items="${professionList}" /></td>
-                </tr>
-                <tr>
                     <td colspan="2" align="center"><input type="submit" value="Register" /></td>
                 </tr>
             </table>

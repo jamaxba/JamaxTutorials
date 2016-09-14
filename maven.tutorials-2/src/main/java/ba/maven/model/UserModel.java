@@ -1,6 +1,7 @@
 package ba.maven.model;
 
 import java.util.Date;
+import javax.persistence.*;
 
 public class UserModel {
 	
@@ -8,7 +9,7 @@ public class UserModel {
 	private String password;
 	private String email;
 	private Date birthDate;
-	private String profession;
+	private String passwordConfirm;
 	
 	// getters and setters
 	
@@ -36,11 +37,15 @@ public class UserModel {
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
-	public String getProfession() {
-		return profession;
-	}
-	public void setProfession(String profession) {
-		this.profession = profession;
-	}
+	
+	@Transient
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
+    }
+
 	
 }
