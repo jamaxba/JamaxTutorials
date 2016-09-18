@@ -1,40 +1,55 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>   
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Registration form</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="<c:url value="/resources/static/css/index.css" />" />
+
+    <title>Create an account</title>
 </head>
+
 <body>
-	<div align="center">
-		<form:form action="register" method="post" commandName="userForm">
-			<table border="0">
-				<tr>
-					<td colspan="2" align="center"><h2>Jamax Maven Tutorial - Registration form</h2></td>
-				</tr>
-				<tr>
-					<td>User Name:</td>
-					<td><form:input path="username" /></td>
-				</tr>
-				<tr>
-                    <td>Password:</td>
-                    <td><form:password path="password" /></td>
-                </tr>
-                <tr>
-                    <td>E-mail:</td>
-                    <td><form:input path="email" /></td>
-                </tr>
-                <tr>
-                    <td>Birthday (mm/dd/yyyy):</td>
-                    <td><form:input path="birthDate" /></td>
-                </tr>
-                    <td colspan="2" align="center"><input type="submit" value="Register" /></td>
-                </tr>
-            </table>
-        </form:form>
-	</div>
+
+<div>
+
+    <form:form method="POST" modelAttribute="userForm" class="form-signin">
+        <h2 class="form-signin-heading">Create your account</h2>
+        <spring:bind path="username">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="text" path="username" class="form-control" placeholder="Username"
+                            autofocus="true"></form:input>
+                <form:errors path="username"></form:errors>
+            </div>
+        </spring:bind>
+
+        <spring:bind path="password">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="password" path="password" class="form-control" placeholder="Password"></form:input>
+                <form:errors path="password"></form:errors>
+            </div>
+        </spring:bind>
+
+        <spring:bind path="passwordConfirm">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="password" path="passwordConfirm" class="form-control"
+                            placeholder="Confirm your password"></form:input>
+                <form:errors path="passwordConfirm"></form:errors>
+            </div>
+        </spring:bind>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+    </form:form>
+
+</div>
 </body>
 </html>
